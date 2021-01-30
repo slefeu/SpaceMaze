@@ -11,6 +11,7 @@ public class RayCast_Cogs : MonoBehaviour
     private bool IsCarrying = false;
 
     public Rect position;
+    public Texture2D SmallCrosshair;
     public Texture2D crosshair;
     public GUIStyle UIStyle;
     public Rect CogUI = new Rect(10, 10, 100, 20);
@@ -34,21 +35,21 @@ public class RayCast_Cogs : MonoBehaviour
                     {
                         BigCog = true;
                         IsCarrying = true;
-                        hit.transform.parent.gameObject.active = false;
+                        hit.transform.gameObject.active = false;
 
                     }
                     if (hit.transform.gameObject.tag == "mediumcog" && !IsCarrying)
                     {
                         MediumCog = true;
                         IsCarrying = true;
-                        hit.transform.parent.gameObject.active = false;
+                        hit.transform.gameObject.active = false;
 
                     }
                     if (hit.transform.gameObject.tag == "smallcog" && !IsCarrying)
                     {
                         SmallCog = true;
                         IsCarrying = true;
-                        hit.transform.parent.gameObject.active = false;
+                        hit.transform.gameObject.active = false;
                     }
                     if (hit.transform.gameObject.tag == "cogpointbig" && IsCarrying)
                     {
@@ -57,6 +58,10 @@ public class RayCast_Cogs : MonoBehaviour
                             BigCog = false;
                             IsCarrying = false;
                             hit.transform.GetChild(0).gameObject.active = true;
+                        }
+                        else
+                        {
+                            Player._instance.life--;
                         }
                     }
                     if (hit.transform.gameObject.tag == "cogpointsmall" && IsCarrying)
@@ -67,6 +72,10 @@ public class RayCast_Cogs : MonoBehaviour
                             IsCarrying = false;
                             hit.transform.GetChild(0).gameObject.active = true;
                         }
+                        else
+                        {
+                            Player._instance.life--;
+                        }
                     }
                     if (hit.transform.gameObject.tag == "cogpointmedium" && IsCarrying)
                     {
@@ -75,6 +84,9 @@ public class RayCast_Cogs : MonoBehaviour
                             MediumCog = false;
                             IsCarrying = false;
                             hit.transform.GetChild(0).gameObject.active = true;
+                        } else
+                        {
+                            Player._instance.life--;
                         }
                     }
                 }
@@ -111,6 +123,7 @@ public class RayCast_Cogs : MonoBehaviour
 
     void OnGUI()
     {
+        GUI.DrawTexture(new Rect((Screen.width - SmallCrosshair.width) / 2, (Screen.height - SmallCrosshair.height) / 2, SmallCrosshair.width, SmallCrosshair.height), SmallCrosshair);
         GUI.DrawTexture(position, crosshair);
         if (IsCarrying)
         {
