@@ -43,10 +43,12 @@ public class JukeboxPuzzle : MonoBehaviour
             if (positions[0] < positions[1] && positions[1] < positions[2] && positions[2] < positions[3])
             {
                 done = true;
+                GameManager._instance.Coroutine();
                 //énigme validé : verrou ouvert
             }
             else
             {
+                Player._instance.life--;
                 for (int i = 0; i < feedback.Count; i++)
                 {
                     feedback[i].GetComponent<MeshRenderer>().material = mat[0];
