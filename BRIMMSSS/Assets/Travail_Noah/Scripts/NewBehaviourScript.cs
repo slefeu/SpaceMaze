@@ -30,6 +30,7 @@ public class NewBehaviourScript : MonoBehaviour
             {
                 this.GetComponentInParent<JukeboxPuzzle>().positions[0] = id;
                 children.GetComponent<MeshRenderer>().material = this.GetComponentInParent<JukeboxPuzzle>().mat[1];
+
             }
 
             else if (this.GetComponentInParent<JukeboxPuzzle>().positions[1] == 0 || this.GetComponentInParent<JukeboxPuzzle>().positions[1] == id)
