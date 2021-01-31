@@ -48,12 +48,12 @@ public class JukeboxPuzzle : MonoBehaviour
             }
             else
             {
-                Player._instance.life--;
                 for (int i = 0; i < feedback.Count; i++)
                 {
                     feedback[i].GetComponent<MeshRenderer>().material = mat[0];
                     positions[i] = 0;
                 }
+                Player._instance.life--;
             }
         }
         if (done)
