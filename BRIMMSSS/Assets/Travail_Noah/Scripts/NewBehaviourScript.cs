@@ -50,7 +50,6 @@ public class NewBehaviourScript : MonoBehaviour
                 this.GetComponentInParent<JukeboxPuzzle>().positions[3] = id;
                 children.GetComponent<MeshRenderer>().material = this.GetComponentInParent<JukeboxPuzzle>().mat[1];
             }
-
         }
     }
     private void OnTriggerExit(Collider other)
