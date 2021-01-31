@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private GameObject _puzzleDidDraw;
     private Text _puzzleDidDrawText;
     public GameObject _endTrigger;
+    public bool end=false;
     void Awake()
     {
         if (_instance == null)
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
             _puzzleDidDrawText.text = ("You stil have" + (4 - puzzleDone) + "more puzzle to do before you can escape");
         if (puzzleDone == 4)
         {
+            end = true;
             _puzzleDidDrawText.text = ("You finished all the puzzles, get out of here");
             _endTrigger.SetActive(true);
             yield return new WaitForSeconds(3f);

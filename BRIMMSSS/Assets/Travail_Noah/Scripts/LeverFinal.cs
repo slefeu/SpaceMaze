@@ -2,41 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeverManager : MonoBehaviour
+public class LeverFinal : MonoBehaviour
 {
-    public static LeverManager Lever_instance;
-    //toutes les 5 listes :
-    /*public List<int> firstPattern;
-    public List<int> secondPattern;
-    public List<int> thirdPattern;
-    public List<int> fourthPattern;
-    public List<int> fifthPattern;
-    
-    public List<int> leverID;
-    */
-    public List<GameObject> levers;
+    public static LeverFinal lever_instance;
     public List<int> answer;
-    /*private List<int> save;
-    public List<Material> image;
-    public List<GameObject> feedback;
-    private int rand;
-    private int randID;
-    */// Start is called before the first frame update
+    public List<GameObject> levers;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
     void Awake()
     {
-        if (Lever_instance == null)
+        if (lever_instance == null)
         {
-            Lever_instance = this;
+            lever_instance = this;
             DontDestroyOnLoad(this);
         }
         else
             Destroy(this.gameObject);
     }
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -61,6 +46,6 @@ public class LeverManager : MonoBehaviour
                 levers[i].GetComponent<LeverScripts>().feedback.SetActive(false);
             }
         }
-
+            
     }
 }
