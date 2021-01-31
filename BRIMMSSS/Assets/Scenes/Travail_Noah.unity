@@ -1094,9 +1094,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4acfebc9e94f647b56e80d2e7c058c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  door: {fileID: 0}
   puzzleToDo: 4
   puzzleDone: 0
-  _endTrigger: {fileID: 0}
   end: 0
 --- !u!1 &1753979789
 GameObject:

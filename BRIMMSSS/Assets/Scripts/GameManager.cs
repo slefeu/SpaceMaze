@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         {
             end = true;
         }
-
+        yield return 0;
 
     }
     public void Coroutine()
@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag!=null && other.tag==player && end)
+        if (other.tag!=null && other.tag=="Player" && end)
         {
-            door.Destroy();
+            Destroy(door);
         }
     }
 
