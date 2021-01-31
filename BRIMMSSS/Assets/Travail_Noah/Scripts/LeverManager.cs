@@ -14,6 +14,7 @@ public class LeverManager : MonoBehaviour
     
     public List<int> leverID;
     */
+    public bool end = false;
     public List<GameObject> levers;
     public List<int> answer;
     /*private List<int> save;
@@ -40,26 +41,33 @@ public class LeverManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < levers.Count; i++)
+        if (!end)
         {
-            if (answer[i] == 0)
-            {
-                return;
-            }
-        }
-        if (answer[0] == 2 && answer[1] == 1 && answer[2] == 4 && answer[3] == 3)
-        {
-            GameManager._instance.Coroutine();
-        }
-        else
-        {
-            Player._instance.life--;
             for (int i = 0; i < answer.Count; i++)
             {
-                answer[i] = 0;
-                levers[i].GetComponent<MeshRenderer>().enabled = true;
-                levers[i].GetComponent<LeverScripts>().feedback.SetActive(false);
+                if (answer[i] == 0)
+                {
+                    return;
+                }
             }
+            if (answer[0] == 2 && answer[1] == 1 && answer[2] == 4 && answer[3] == 3)
+            {
+                GameManager._instance.Coroutine();
+                end = true;
+            }
+            else
+            {
+                Player._instance.life--;
+                for (int i = 0; i < answer.Count; i++)
+                {
+                    answer[i] = 0;
+                    Debug.Log(answer[i]);
+                    levers[i].GetComponent<MeshRenderer>().enabled = true;
+                    levers[i].GetComponent<SingleLeverFinal>().feedback.SetActive(false);
+                }
+            }
+
+
         }
 
     }
