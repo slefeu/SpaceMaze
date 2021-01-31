@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Real Materials\Demo\Scripts\Camera_WASD_movement.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -63,6 +64,8 @@
      <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+     <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Tarrot.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
@@ -98,7 +101,16 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
      <Compile Include="Assets\Travail_Noah\Scripts\JukeboxPuzzle.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\LeverFinal.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\LeverManager.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\LeverScripts.cs" />
      <Compile Include="Assets\Travail_Noah\Scripts\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\Orb.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\Player.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\RayCast_Cogs.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\SceneScript.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\SingleLeverFinal.cs" />
+     <Compile Include="Assets\Travail_Noah\Scripts\Tarot.cs" />
      <Compile Include="Assets\jukebox\orbmusic.cs" />
      <Compile Include="Assets\jukebox\orbtext.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -310,6 +322,9 @@
  </Reference>
  <Reference Include="UnityEditor">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.StandardEvents">
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -666,31 +681,34 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/MonoBleedingEdge/lib/mono/unityscript/Boo.Lang.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Analytics.DataPrivacy">
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/solen/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/bobba/source/repos/Drasibaoh/BRIMMSSS/BRIMMSSS/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

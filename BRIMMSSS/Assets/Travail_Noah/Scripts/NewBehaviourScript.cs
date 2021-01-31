@@ -10,6 +10,7 @@ public class NewBehaviourScript : MonoBehaviour
     public string word;
     public Text display;
     public GameObject children;
+    public GameObject button;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class NewBehaviourScript : MonoBehaviour
         display.text = word;
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            button.GetComponent<Animation>().Play();
             if (this.GetComponentInParent<JukeboxPuzzle>().positions[0] == 0 || this.GetComponentInParent<JukeboxPuzzle>().positions[0] == id)
             {
                 this.GetComponentInParent<JukeboxPuzzle>().positions[0] = id;

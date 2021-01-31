@@ -21,6 +21,30 @@ public class RayCast_Cogs : MonoBehaviour
 
     }
 
+    void CheckWin(Transform transform)
+    {
+        bool IsWinned = true;
+        Transform base_transform = transform.parent;
+        foreach (Transform t in base_transform.gameObject.GetComponentsInChildren<Transform>(true))
+        {
+            if (t.gameObject.active == false)
+            {
+                IsWinned = false;
+            }
+        }
+        if (IsWinned)
+        {
+            foreach (Transform t in base_transform.gameObject.GetComponentsInChildren<Transform>(true))
+            {
+                if (t.gameObject.name.StartsWith("SM") && t.gameObject.name != "SM_Cadre")
+                {
+                    t.gameObject.GetComponent<Animation>().Play();
+                }
+            }
+            GameManager._instance.Coroutine();
+        }
+    }
+
     void CheckClick()
     {
         if (Input.GetMouseButtonDown(0))
@@ -58,6 +82,7 @@ public class RayCast_Cogs : MonoBehaviour
                             BigCog = false;
                             IsCarrying = false;
                             hit.transform.GetChild(0).gameObject.active = true;
+                            CheckWin(hit.transform);
                         }
                         else
                         {
@@ -71,6 +96,7 @@ public class RayCast_Cogs : MonoBehaviour
                             SmallCog = false;
                             IsCarrying = false;
                             hit.transform.GetChild(0).gameObject.active = true;
+                            CheckWin(hit.transform);
                         }
                         else
                         {
@@ -84,6 +110,7 @@ public class RayCast_Cogs : MonoBehaviour
                             MediumCog = false;
                             IsCarrying = false;
                             hit.transform.GetChild(0).gameObject.active = true;
+                            CheckWin(hit.transform);
                         }
                         else
                         {
@@ -99,10 +126,17 @@ public class RayCast_Cogs : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        int layerMask = 1 << 8;
+
+        // This would cast rays only against colliders in layer 8.
+        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
+        layerMask = ~layerMask;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layerMask))
         {
             if (hit.transform != null && hit.distance < 2)
             {
+                Debug.Log(hit.distance);
+                Debug.Log(hit.transform.gameObject.tag);
                 if (hit.transform.gameObject.tag == "bigcog" && IsCarrying == false)
                 {
                     position = new Rect((Screen.width - crosshair.width) / 2, (Screen.height - crosshair.height) / 2, crosshair.width, crosshair.height);
