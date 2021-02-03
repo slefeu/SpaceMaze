@@ -12,6 +12,7 @@ TagManager:
   - mediumcog
   - bigcog
   - end
+  - Clickable
   layers:
   - Default
   - TransparentFX
